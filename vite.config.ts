@@ -18,6 +18,9 @@ export default defineConfig({
 			entry: '../src/polar-client.ts',
 			fileName: () => 'polar-client.js',
 		},
+		outDir: '../dist',
+		emptyOutDir: true,
+		sourcemap: true,
 		rollupOptions: {
 			output: {
 				assetFileNames: (assetInfo) =>

@@ -2,11 +2,8 @@
 	"name": "@polar/client-style-preview",
 	"version": "1.0.1",
 	"description": "POLAR Client Style Preview. Made to preview styles in OpenLayers.",
-	"main": "src/index.js",
-	"devDependencies": {
-		"@dataport/eslint-config-geodev": "^0.3.4",
-		"@vitejs/plugin-vue": "^6.0.1",
-		"vite": "^7.0.6"
+	"exports": {
+		".": "./dist/polar-client.js"
 	},
 	"scripts": {
 		"start": "vite",
@@ -30,8 +27,13 @@
 	},
 	"homepage": "https://github.com/Dataport/polar-client-style-preview#readme",
 	"dependencies": {
-		"@polar/polar": "file:../polar",
+		"@polar/polar": "file:../polar"
+	},
+	"devDependencies": {
+		"@dataport/eslint-config-geodev": "^0.3.4",
+		"@vitejs/plugin-vue": "^6.0.1",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-prettier": "^5.5.3"
+		"eslint-plugin-prettier": "^5.5.3",
+		"vite": "^7.0.6"
 	}
 }
