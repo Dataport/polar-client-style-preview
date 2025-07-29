@@ -1,12 +1,15 @@
 {
 	"name": "@polar/client-style-preview",
-	"version": "1.0.1",
+	"version": "2.0.0-alpha1",
 	"description": "POLAR Client Style Preview. Made to preview styles in OpenLayers.",
+	"type": "module",
 	"exports": {
-		".": "./dist/polar-client.js"
+		".": "./dist/polar-client.js",
+		"./polar-client.css": "./dist/polar-client.css"
 	},
 	"scripts": {
-		"start": "vite",
+		"dev": "vite dev",
+		"core-dev": "vite dev --mode core-development",
 		"build": "vite build"
 	},
 	"repository": {
@@ -27,7 +30,8 @@
 	},
 	"homepage": "https://github.com/Dataport/polar-client-style-preview#readme",
 	"dependencies": {
-		"@polar/polar": "file:../polar"
+		"@polar/polar": "file:../polar",
+		"sass": "^1.89.2"
 	},
 	"devDependencies": {
 		"@dataport/eslint-config-geodev": "^0.3.4",

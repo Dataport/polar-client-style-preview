@@ -1,4 +1,5 @@
 import * as polar from '@polar/polar'
+import './demo.css'
 
 export default {
 	...polar,

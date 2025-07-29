@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
 	plugins: [
 		vue({
 			template: {
@@ -16,19 +17,29 @@ export default defineConfig({
 		lib: {
 			name: 'MapClient',
 			entry: '../src/polar-client.ts',
-			fileName: () => 'polar-client.js',
+			fileName: 'polar-client',
 		},
 		outDir: '../dist',
 		emptyOutDir: true,
 		sourcemap: true,
-		rollupOptions: {
-			output: {
-				assetFileNames: (assetInfo) =>
-					assetInfo.name === 'style.css' ? 'polar-client.css' : assetInfo.name,
-			},
-		},
 	},
 	server: {
 		port: 1234,
+		...(mode === 'core-development' ? {
+			fs: {
+				allow: [
+					resolve(__dirname),
+					resolve(__dirname, '..', 'polar'),
+				],
+			},
+		} : {}),
 	},
-})
+	...(mode === 'core-development' ? {
+		resolve: {
+			alias: {
+				'@polar/polar/polar.css': resolve(__dirname, 'src', 'dev.css'),
+				'@polar/polar': resolve(__dirname, '..', 'polar', 'src', 'core', 'index.ts'),
+			},
+		},
+	} : {}),
+}))
